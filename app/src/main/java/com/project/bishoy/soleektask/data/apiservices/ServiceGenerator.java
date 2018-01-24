@@ -14,11 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
-
-    private static final String TAG = "ServiceGenerator";
-
-  private static final String BASE_URL = "https://mina68.000webhostapp.com/";
-//    private static final String BASE_URL = "http://bishoy.esy.es/retrofit/";
+    private static final String BASE_URL = "http://www.thejerb.com/jerb/public/api/";
 
 
     private static Retrofit retrofit;
@@ -26,7 +22,6 @@ public class ServiceGenerator {
     private static Gson gson = new GsonBuilder()
             .setLenient()
             .create();
-
 
 
     private static OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
@@ -37,7 +32,6 @@ public class ServiceGenerator {
                     .client(createOkHttpInterceptor())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
-
 
 
     public static <S> S createService(Class<S> serviceClass) {
@@ -69,7 +63,7 @@ public class ServiceGenerator {
 //            }
 //        });
 
-        return  okHttpClientBuilder.build();
+        return okHttpClientBuilder.build();
 
 
     }
@@ -79,7 +73,6 @@ public class ServiceGenerator {
         RequestBody requestBody = RequestBody.create(MediaType.parse("text"), string);
         return requestBody;
     }
-
 
 
 }

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#904799</color>
+    <color name="colorPrimaryDark">#5B1566</color>
+    <color name="colorAccent">#904799</color>
+    <color name="lightBlack">#3A3325</color>
+    <color name="color_background_wedding">#EFEFEF</color>
+    <color name="grey">#C9CACC</color>
+
+    C9CACC
+    <!--#5B1566 #44104D 7C1F8C-->
 </resources>
