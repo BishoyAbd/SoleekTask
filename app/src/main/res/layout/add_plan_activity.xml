@@ -105,35 +105,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-
-            >
+            android:layout_marginTop="28dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_friends_min" />
 
-            <com.project.bishoy.soleektask.customviews.CrystalSeekbar
+
+            <com.warkiz.widget.IndicatorSeekBar
+                android:id="@+id/seekBar_attendees"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="-3dp"
-                android:layout_marginRight="-3dp"
-                android:elevation="3dp"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
-                app:bar_color="#FFFFFF"
-                app:bar_highlight_color="#000000"
-                app:steps="10"
-                app:thumb_color="#f9f9f9"
-                app:thumb_diameter="20dp" />
+                app:isb_indicator_color="@android:color/transparent"
+                app:isb_indicator_stay="true"
+                app:isb_indicator_text_color="@color/black"
+                app:isb_indicator_text_size="20sp"
+                app:isb_max="1000"
+                app:isb_min="100"
+                app:isb_seek_bar_type="discrete_ticks"
+                app:isb_thumb_color="@color/white"
+                app:isb_thumb_width="20dp"
+                app:isb_tick_color="@android:color/transparent"
+                app:isb_tick_num="19"
+                app:isb_track_background_bar_color="@color/white"
+                app:isb_track_progress_bar_color="@color/black" />
+
 
             <ImageView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="0dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_friends_max" />
         </LinearLayout>
 
