@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.project.bishoy.soleektask.R;
-import com.project.bishoy.soleektask.Util;
+import com.project.bishoy.soleektask.util.Util;
 import com.project.bishoy.soleektask.data.model.Data;
 import com.squareup.picasso.Picasso;
 

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SoleekTask</string>
+    <string name="next">Next</string>
+    <string name="love_story">Love Story</string>
+    <string name="any_location">Any</string>
+    <string name="error_invalid_location">please add location</string>
+    <string name="error_invalid_budget">please add budget</string>
 </resources>

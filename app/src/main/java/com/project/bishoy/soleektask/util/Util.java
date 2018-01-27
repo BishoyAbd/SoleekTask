@@ -1,6 +1,8 @@
-package com.project.bishoy.soleektask;
+package com.project.bishoy.soleektask.util;
 
 import android.content.Context;
+
+import java.util.Calendar;
 
 /**
  * Created by bisho on 1/24/2018.
@@ -17,5 +19,9 @@ public class Util {
     public static int dp2px(Context context, float dipValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
+    }
+
+    public static long getDiff(Calendar cal1, Calendar cal2) {
+        return Math.abs(cal1.getTimeInMillis() - cal2.getTimeInMillis());
     }
 }

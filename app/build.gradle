@@ -9,8 +9,14 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+
     }
+
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -68,14 +74,27 @@ dependencies {
     /**
      *
      *  //ui libs
-       //for seek bar
+     //for seek bar
      */
     compile 'com.github.warkiz.widget:indicatorseekbar:1.2.5'
+    compile 'com.crystal:crystalrangeseekbar:1.1.1'
 
-    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
+    //for timeDate pickers
+    compile 'com.wdullaer:materialdatetimepicker:3.5.0'
+    //for manipulation of times
+    compile 'net.danlew:android.joda:2.9.9.1'
+
+    //for gallery
+    compile 'com.zhihu.android:matisse:0.4.3'
 
     /*
     timber logging library
      */
     compile 'com.jakewharton.timber:timber:4.5.1'
+
+    //sqlbite 2
+    compile 'com.squareup.sqlbrite2:sqlbrite:2.0.0'
+
+    compile 'com.android.support:multidex:1.0.1'
+
 }

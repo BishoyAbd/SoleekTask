@@ -1,148 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_background_wedding"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingLeft="16dp">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <LinearLayout
 
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
 
-        <LinearLayout
+        >
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary">
 
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_location" />
 
             <TextView
+                android:id="@+id/tv_toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/love_story"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+
+                />
+
+
+            <TextView
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="16dp"
+                android:text="@string/next"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+
+
+                />
+
+            <ImageView
+                android:id="@+id/up_icon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="left"
                 android:layout_marginLeft="16dp"
-                android:text="You are celebrating at"
-                android:textColor="@color/colorPrimary"
-                android:textSize="25sp" />
+                android:src="@drawable/back" />
 
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="32dp">
-
-            <EditText
-                android:id="@+id/et"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_location_1"
-                android:hint="dasdasdas" />
-
-            <com.project.bishoy.soleektask.customviews.SmoothCheckBox
-                android:id="@+id/checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et"
-                android:layout_marginTop="8dp"
-                app:color_checked="@color/colorPrimary" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/checkbox"
-                android:layout_marginLeft="8dp"
-                android:layout_toRightOf="@id/checkbox"
-                android:gravity="center_vertical"
-                android:text="did not decide yet" />
-
-        </RelativeLayout>
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="?actionBarSize"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_location" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:text="How many friend and family?"
-                android:textColor="@color/colorPrimary"
-                android:textSize="25sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="28dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_friends_min" />
-
-
-            <com.warkiz.widget.IndicatorSeekBar
-                android:id="@+id/seekBar_attendees"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                app:isb_indicator_color="@android:color/transparent"
-                app:isb_indicator_stay="true"
-                app:isb_indicator_text_color="@color/black"
-                app:isb_indicator_text_size="20sp"
-                app:isb_max="1000"
-                app:isb_min="100"
-                app:isb_seek_bar_type="discrete_ticks"
-                app:isb_thumb_color="@color/white"
-                app:isb_thumb_width="20dp"
-                app:isb_tick_color="@android:color/transparent"
-                app:isb_tick_num="19"
-                app:isb_track_background_bar_color="@color/white"
-                app:isb_track_progress_bar_color="@color/black" />
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="0dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_friends_max" />
-        </LinearLayout>
-
-
-    </LinearLayout>
-
+    <include layout="@layout/add_plan_content" />
 </LinearLayout>

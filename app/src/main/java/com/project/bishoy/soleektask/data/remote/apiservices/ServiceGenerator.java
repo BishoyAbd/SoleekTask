@@ -1,4 +1,4 @@
-package com.project.bishoy.soleektask.data.apiservices;
+package com.project.bishoy.soleektask.data.remote.apiservices;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

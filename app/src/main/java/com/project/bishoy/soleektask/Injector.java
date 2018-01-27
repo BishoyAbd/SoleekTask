@@ -8,9 +8,9 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.project.bishoy.soleektask.data.DataSource;
-import com.project.bishoy.soleektask.data.LocalDataSource;
-import com.project.bishoy.soleektask.data.RemoteDataSource;
 import com.project.bishoy.soleektask.data.WeddingRepository;
+import com.project.bishoy.soleektask.data.local.LocalDataSource;
+import com.project.bishoy.soleektask.data.remote.apiservices.RemoteDataSource;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -23,7 +23,7 @@ public class Injector {
     public static WeddingRepository provideApartmentRepository(@NonNull Context context) {
         checkNotNull(context);
         return WeddingRepository.getInstance(RemoteDataSource.getInstance(),
-                LocalDataSource.getInstance());
+                LocalDataSource.getInstance(context));
     }
 
 

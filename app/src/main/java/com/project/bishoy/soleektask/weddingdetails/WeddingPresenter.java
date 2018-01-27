@@ -1,17 +1,26 @@
 package com.project.bishoy.soleektask.weddingdetails;
 
-import com.project.bishoy.soleektask.Util;
+import android.database.Cursor;
+
 import com.project.bishoy.soleektask.data.DataSource;
 import com.project.bishoy.soleektask.data.WeddingRepository;
+import com.project.bishoy.soleektask.data.local.WeddingSqlHelper;
+import com.project.bishoy.soleektask.data.model.Plan;
 import com.project.bishoy.soleektask.data.model.ServerResponse;
+import com.project.bishoy.soleektask.data.model.TipsAndTodos;
+import com.squareup.sqlbrite2.SqlBrite;
+
+import java.util.ArrayList;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
+import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 /**
  * Created by bisho on 1/23/2018.
@@ -21,7 +30,7 @@ public class WeddingPresenter implements WeedingContract.Presenter {
 
     private DataSource mWeddingRepository;
     private CompositeDisposable compositeDisposable;
-    WeedingContract.View view;
+    private WeedingContract.View view;
 
     public WeddingPresenter(WeedingContract.View view, WeddingRepository weddingRepository) {
         mWeddingRepository = weddingRepository;
@@ -80,8 +89,8 @@ public class WeddingPresenter implements WeedingContract.Presenter {
     }
 
     @Override
-    public void addPlan() {
-
+    public void addPlan(Plan plan) {
+        mWeddingRepository.addPlan(plan);
     }
 
     @Override
@@ -89,92 +98,61 @@ public class WeddingPresenter implements WeedingContract.Presenter {
 
     }
 
+    //implement these methods for loading tips and todos and plan simultainiuosly
+
     @Override
     public void getTips() {
-        view.showLoading();
-        view.hideError();
-        Disposable disposable = mWeddingRepository.getTips().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<ServerResponse>() {
-
-                    @Override
-                    public void onSuccess(ServerResponse serverResponse) {
-                        view.hideLoading();
-                        if (serverResponse.getCode() != Util.ERROR_404)
-                            view.displayTips(serverResponse.getData());
-                        else
-                            view.showError(Util.ERROR_NO_DATA);
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showError(Util.ERROR_NO_DATA);
-                        view.hideLoading();
-                    }
-                });
-
-        compositeDisposable.add(disposable);
     }
 
     @Override
     public void getTodos() {
 
-        view.showLoading();
-        view.hideError();
-        Disposable disposable = mWeddingRepository.getTodos().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<ServerResponse>() {
-
-                    @Override
-                    public void onSuccess(ServerResponse serverResponse) {
-                        view.hideLoading();
-                        if (serverResponse.getCode() != Util.ERROR_404)
-                            view.displayTips(serverResponse.getData());
-                        else
-                            view.showError(Util.ERROR_NO_DATA);
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        //network error or request timeout reached
-                        view.showError();
-                        view.hideLoading();
-                    }
-                });
-
-        compositeDisposable.add(disposable);
-
     }
 
     @Override
     public void getPlans() {
-
-        //TODO store and get data locally
+        final ArrayList<Plan> plans = new ArrayList<>();
         view.showLoading();
-        view.hideError();
-        Disposable disposable = mWeddingRepository.getPlans().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<ServerResponse>() {
+
+        mWeddingRepository.getPlans().
+                observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<SqlBrite.Query>() {
 
                     @Override
-                    public void onSuccess(ServerResponse serverResponse) {
-                        view.hideLoading();
-                        if (serverResponse.getCode() != Util.ERROR_404)
-                            view.displayTips(serverResponse.getData());
-                        else
-                            view.showError();
+                    public void onNext(SqlBrite.Query query) {
+                        Cursor cursor = query.run();
+                        Timber.d("number of plans ---> " + cursor.getCount());
+                        while (cursor.moveToNext()) {
 
+                            Plan plan = new Plan();
+                            plan.setCost(cursor.getInt(cursor.getColumnIndex(WeddingSqlHelper.COLUMN_COST)));
+                            plan.setAttendees(cursor.getInt(cursor.getColumnIndex(WeddingSqlHelper.COLUMN_ATTENDEES)));
+                            plan.setLocation(cursor.getString(cursor.getColumnIndex(WeddingSqlHelper.COLUMN_LOCATION)));
+                            plans.add
+                                    (plan);
+                        }
+
+                        view.hideLoading();
+                        if (plans.isEmpty())
+                            view.showNoResult();
+                        else
+                            view.showPlans(plans);
                     }
+
 
                     @Override
                     public void onError(Throwable e) {
+                        Timber.d("error getting plans ---> " + e.getLocalizedMessage());
                         view.showError();
-                        view.hideLoading();
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Timber.d("on complete getting plans---> " );
+
                     }
                 });
 
-        compositeDisposable.add(disposable);
     }
+
 }

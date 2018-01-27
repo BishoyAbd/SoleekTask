@@ -3,13 +3,20 @@ package com.project.bishoy.soleektask.weddingdetails;
 import com.project.bishoy.soleektask.BasePresenter;
 import com.project.bishoy.soleektask.BaseView;
 import com.project.bishoy.soleektask.data.model.Data;
+import com.project.bishoy.soleektask.data.model.Plan;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by bisho on 1/23/2018.
  */
 
+
+
+/*
+view and presenter of the wedding activity
+ */
 public interface WeedingContract {
 
     interface View extends BaseView<Presenter> {
@@ -18,13 +25,14 @@ public interface WeedingContract {
 
         void displayTodo(List<Data> todoList);
 
-        void displayPlans();
+        //void displayPlans(List<Plan> planList);
+
 
         void openGallery();
 
-        void showTimer();
+        void showNoResult();
 
-        void openDateTimePicker();
+        void showPlans(ArrayList<Plan> plans);
     }
 
     interface Presenter extends BasePresenter {
@@ -33,11 +41,12 @@ public interface WeedingContract {
 
         void startTimer(String dat);
 
-        void addPlan();
+
+        void addPlan(Plan plan);
 
         void openAddPlanScreen();
 
-        void getTips();
+        void getTips(); //add userId as a parameter for those methods
 
         void getTodos();
 

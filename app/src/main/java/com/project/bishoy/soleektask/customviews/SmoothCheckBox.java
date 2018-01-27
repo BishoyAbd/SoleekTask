@@ -18,7 +18,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Checkable;
 
 import com.project.bishoy.soleektask.R;
-import com.project.bishoy.soleektask.Util;
+import com.project.bishoy.soleektask.util.Util;
 
 /**
  * link to class --> Github : github.com/andyxialm

@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_layout_height">
 
-
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -23,138 +22,159 @@
 
             >
 
-            <ImageView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/cover_photo"
-                app:layout_collapseMode="parallax" />
+                android:layout_height="match_parent">
 
+                <ImageView
+                    android:id="@+id/imageView_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cover_photo"
+                    app:layout_collapseMode="parallax" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingEnd="20dp"
-                android:paddingStart="20dp">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:id="@+id/dateTimeContainerLayout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="?attr/actionBarSize"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
+                    android:paddingEnd="20dp"
+                    android:paddingStart="20dp">
 
-                    >
-
-
-                    <TextView
-                        style="@style/TimerStyle.title"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="?attr/actionBarSize"
                         android:layout_weight="1"
-                        android:text="Day"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
 
-                        />
+                        >
 
 
-                    <TextView
-                        android:id="@+id/tv_day"
-                        style="@style/TimerStyle"
-                        android:layout_weight="2"
-                        android:text="10"
+                        <TextView
+                            style="@style/TimerStyle.title"
+                            android:layout_weight="1"
+                            android:text="Day"
 
-                        />
+                            />
+
+
+                        <TextView
+                            android:id="@+id/tv_day"
+                            style="@style/TimerStyle"
+                            android:layout_weight="2"
+                            android:text="0"
+
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="?attr/actionBarSize"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+
+                        >
+
+
+                        <TextView
+                            style="@style/TimerStyle.title"
+                            android:layout_weight="1"
+                            android:text="Hour"
+
+                            />
+
+
+                        <TextView
+                            android:id="@+id/tv_hour"
+                            style="@style/TimerStyle"
+                            android:layout_weight="2"
+                            android:text="0"
+
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="?attr/actionBarSize"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+
+                        >
+
+
+                        <TextView
+                            style="@style/TimerStyle.title"
+                            android:layout_weight="1"
+                            android:text="Min"
+
+                            />
+
+
+                        <TextView
+                            android:id="@+id/tv_min"
+                            style="@style/TimerStyle"
+                            android:layout_weight="2"
+                            android:text="0"
+
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="?attr/actionBarSize"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+
+                        >
+
+
+                        <TextView
+                            style="@style/TimerStyle.title"
+                            android:layout_weight="1"
+                            android:text="sec"
+
+                            />
+
+
+                        <TextView
+                            android:id="@+id/tv_sec"
+                            style="@style/TimerStyle"
+                            android:layout_weight="2"
+                            android:text="0"
+
+                            />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tv_changeCover"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="?attr/actionBarSize"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="ADD COVER"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
-                    >
-
-
-                    <TextView
-                        style="@style/TimerStyle.title"
-                        android:layout_weight="1"
-                        android:text="Hour"
-
-                        />
-
-
-                    <TextView
-                        android:id="@+id/tv_hour"
-                        style="@style/TimerStyle"
-                        android:layout_weight="2"
-                        android:text="10"
-
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="?attr/actionBarSize"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-
-                    >
-
-
-                    <TextView
-                        style="@style/TimerStyle.title"
-                        android:layout_weight="1"
-                        android:text="Min"
-
-                        />
-
-
-                    <TextView
-                        android:id="@+id/tv_min"
-                        style="@style/TimerStyle"
-                        android:layout_weight="2"
-                        android:text="10"
-
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="?attr/actionBarSize"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-
-                    >
-
-
-                    <TextView
-                        style="@style/TimerStyle.title"
-                        android:layout_weight="1"
-                        android:text="sec"
-
-                        />
-
-
-                    <TextView
-                        android:id="@+id/tv_sec"
-                        style="@style/TimerStyle"
-                        android:layout_weight="2"
-                        android:text="10"
-
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/tool_bar"
@@ -176,10 +196,18 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
-
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_main" />
 
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_addPlane"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:src="@android:drawable/ic_input_add"
+        android:tint="@android:color/white"
+        app:layout_anchorGravity="left|bottom" />
 </android.support.design.widget.CoordinatorLayout>

@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="app_bar_layout_height">250dp</dimen>
+    <dimen name="app_bar_layout_height">200dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="settings_content_marginBottom">30dp</dimen>
     <dimen name="widget_3x3_text_size">14sp</dimen>
     <dimen name="widget_textView_margin">3dp</dimen>
     <dimen name="cardview_margin">20dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="seekbar_width">200dp</dimen>
+    <dimen name="tip_layout_height">100dp</dimen>
+    <dimen name="grid_expected_size">160dp</dimen>
+    <dimen name="addPlanPaddingLeft">28dp</dimen>
 
 
 </resources>

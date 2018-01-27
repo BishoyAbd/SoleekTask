@@ -1,7 +1,10 @@
 package com.project.bishoy.soleektask.data;
 
+import com.project.bishoy.soleektask.data.model.Plan;
 import com.project.bishoy.soleektask.data.model.ServerResponse;
 
+import io.reactivex.Completable;
+import io.reactivex.Observable;
 import io.reactivex.Single;
 
 /**
@@ -15,6 +18,8 @@ import io.reactivex.Single;
       1-to encapsulate methods invocation inspired by Command pattern
       2-caching and data refreshing
       3-delegates getting data to LocalDataSource and RemoteDataSource
+
+      Note : this class needs some tweaks for caching to work properly
  */
 
 public class WeddingRepository implements DataSource {
@@ -49,13 +54,19 @@ public class WeddingRepository implements DataSource {
     }
 
     @Override
-    public Single<ServerResponse> getPlans() {
-        return remoteDataSource.getPlans();
+    public Observable getPlans() {
+        return localDataSource.getPlans();
     }
 
     @Override
     public Single<ServerResponse> getTips() {
         return remoteDataSource.getTips();
+    }
+
+    @Override
+    public Completable addPlan(Plan plane) {
+        //add tp server.
+        return localDataSource.addPlan(plane);
     }
 
 }

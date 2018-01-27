@@ -1,11 +1,16 @@
-package com.project.bishoy.soleektask.weddingdetails;
-
-import com.project.bishoy.soleektask.data.model.ServerResponse;
+package com.project.bishoy.soleektask.data.model;
 
 /**
  * Created by bisho on 1/24/2018.
  */
 
+
+import com.project.bishoy.soleektask.weddingdetails.WeddingPresenter;
+
+/**
+ * model to map both tips and todos request in the RX chain  consecutively using zip() operator
+ * {@link  WeddingPresenter}
+ **/
 public class TipsAndTodos {
 
 

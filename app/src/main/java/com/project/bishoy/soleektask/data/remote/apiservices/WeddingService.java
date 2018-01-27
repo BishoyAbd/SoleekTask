@@ -1,6 +1,6 @@
-package com.project.bishoy.soleektask.data.apiservices;
+package com.project.bishoy.soleektask.data.remote.apiservices;
 
-import com.project.bishoy.soleektask.Util;
+import com.project.bishoy.soleektask.util.Util;
 import com.project.bishoy.soleektask.data.model.ServerResponse;
 
 import io.reactivex.Single;
