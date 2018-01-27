@@ -28,7 +28,7 @@ to interact with the server.
 * Picasso for loading and caching images.
 * SqlBrite : a lite-weight library works as a wraper for SQL.
 * ButterKnife to inject views during compile time.
-* other UI third-party librarieslike Juda,Matessi,Timber.
+* other UI and utility third-party libraries like Juda,Matessi,Timber.
 
 
 -----------------------------
