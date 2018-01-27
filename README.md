@@ -11,7 +11,7 @@ packages of this project are feature-based -> "every screen is in package"
 * **data** : represent the Model layer in MVP. contains three important classes.
 
 1. **WeddingRepository**.
-class to hide methods invocation and encapsulate LocalDataSource and ReoteDataSource.
+class to hide methods invocation and encapsulate LocalDataSource and RemoteDataSource.
 2. **LocalDataSource**
 class responsible for caching data (storing plans in our case)
 3. **RemoteDataSource**.
