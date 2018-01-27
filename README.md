@@ -4,7 +4,7 @@
 
 # Note :
 
-packages of this project are feature-based -> "every screen is in package"
+**packages** of this project are feature-based -> "every screen is in package" mainly three packages.
 
 * **addplan** : containg classes of page2 involving adding and interacting with user.
 * **weddingdetails** : contains classes,adapters ... of page1
