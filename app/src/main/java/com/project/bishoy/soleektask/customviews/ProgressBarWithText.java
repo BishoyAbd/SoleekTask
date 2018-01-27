@@ -39,7 +39,7 @@ public class ProgressBarWithText extends View {
     private float maxValue;
 
     private int progressTextColor = Color.BLACK;
-    private float textSize = 18;
+    private float textSize = 25;
     private String text = "";
     private String suffix = "";
     private String prefix = "";

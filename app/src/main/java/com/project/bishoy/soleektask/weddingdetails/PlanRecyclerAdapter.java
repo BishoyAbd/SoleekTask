@@ -1,4 +1,4 @@
-package com.project.bishoy.soleektask.addplan;
+package com.project.bishoy.soleektask.weddingdetails;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -45,7 +45,11 @@ public class PlanRecyclerAdapter extends RecyclerView.Adapter<PlanRecyclerAdapte
 
         holder.planTv.setText("Plan " + generateChar(position));
         holder.locationTv.setText(plan.getLocation());
-        holder.costTv.setText("Planned cost : " + plan.getCost() + "");
+        if (plan.getCost() == 0)
+            holder.costTv.setText("Planned cost : " + " N/A");
+
+        else
+            holder.costTv.setText("Planned cost : " + plan.getCost() + "");
         holder.attendeesTv.setText(plan.getAttendees() + "+ Family and Friends");
         //fake percentage
         holder.initProgressBar();

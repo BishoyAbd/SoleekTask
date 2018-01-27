@@ -172,24 +172,28 @@ setup adapter for the AutoCompleteTextView of location
         boolean valid = true;
 
         Validator validator = new Validator();
-        location = locationEt.getText().toString();
+
         //append 0 before text to prevent NumberFormatException pointer exception in case of empty
         budget = Integer.parseInt(0 + budgetEt.getText().toString());
 
         if (!checkBoxLocation.isChecked()) {
+            location = locationEt.getText().toString();
             if (!validator.validateLocation(location)) {
                 locationEt.setError(getResources().getString(R.string.error_invalid_location));
                 valid = false;
             }
 
-        }
+        } else
+            location = "Any";
+
         if (!checkBoxMoney.isChecked()) {
             if (!validator.validateBudget(budget)) {
                 valid = false;
                 budgetEt.setError(getResources().getString(R.string.error_invalid_budget));
 
             }
-        }
+        } else
+            budget = 0;
 
         return valid;
     }

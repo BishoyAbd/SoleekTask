@@ -14,13 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.bishoy.soleektask.Injector;
 import com.project.bishoy.soleektask.R;
 import com.project.bishoy.soleektask.addplan.AddPlanActivity;
-import com.project.bishoy.soleektask.addplan.PlanRecyclerAdapter;
 import com.project.bishoy.soleektask.data.model.Data;
 import com.project.bishoy.soleektask.data.model.Plan;
 import com.project.bishoy.soleektask.util.PermissionUtil;
@@ -75,6 +75,14 @@ public class MainActivity extends AppCompatActivity implements WeedingContract.V
     @BindView(R.id.tv_sec)
     TextView tvSec;
 
+    @BindView(R.id.loadingProgressBar)
+    ProgressBar progressBar;
+
+    @BindView(R.id.container)
+    LinearLayout container;
+
+    @BindView(R.id.tv_error_or_empty)
+    TextView erroOrNoPlansTextView;
     @BindView(R.id.imageView_cover)
     ImageView imageViewCover;
     private long seconds = 0;
@@ -193,12 +201,12 @@ public class MainActivity extends AppCompatActivity implements WeedingContract.V
 
 
         Interval interval = new Interval(current.getTime(), then.getTime());
-
-        if (!interval.isAfterNow()) {
-            //output " time chosen is not valid"
-            return;
-
-        }
+//
+//        if (!interval.isAfterNow()) {
+//            //output " time chosen is not valid"
+//            return;
+//
+//        }
 
         // convert interval to period to get standard d,h,m,s within this period
         Period period = interval.toPeriod();
@@ -245,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements WeedingContract.V
                                 minutes = 0;
                                 seconds = 0;
                                 //stop counter
-                                stopTimer();
+//                                stopTimer();
 
                             }
 
@@ -293,27 +301,32 @@ public class MainActivity extends AppCompatActivity implements WeedingContract.V
 
     @Override
     public void showLoading() {
-
+        progressBar.setVisibility(View.VISIBLE);
+        progressBar.animate();
+        container.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void hideLoading() {
-
+        progressBar.setVisibility(View.INVISIBLE);
+        container.setVisibility(View.VISIBLE);
     }
+
 
     @Override
     public void showError(String errorNoData) {
-
+        Toast.makeText(this, errorNoData, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void hideError() {
-
+//use it if you intend to use dialogs
     }
 
     @Override
     public void showError() {
-        //show error
+        Toast.makeText(this, "error loading data!", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -384,6 +397,8 @@ public class MainActivity extends AppCompatActivity implements WeedingContract.V
     @Override
     public void showNoResult() {
         //print no plans added before
+        erroOrNoPlansTextView.setVisibility(View.VISIBLE);
+
     }
 
 
